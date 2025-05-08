@@ -4,157 +4,127 @@
   <meta charset="UTF-8">
   <title>MXA Social Media</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      font-family: Arial, sans-serif;
       background: url('https://i.postimg.cc/526npqWX/Picsart-25-05-08-13-27-30-401.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: white;
       overflow: hidden;
+      position: relative;
+      color: white;
     }
 
-    h1 {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 36px;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    .icons {
+    .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 40px;
       gap: 30px;
+      padding-top: 50px;
     }
 
-    .icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      padding: 10px;
-      background: rgba(0,0,0,0.5);
-      animation: pulse 2s infinite;
-      transition: transform 0.3s;
+    .social-card {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 20px;
+      padding: 20px 40px;
+      border-radius: 20px;
+      width: 320px;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0 0 25px rgba(255,255,255,0.2);
+      background: rgba(0, 0, 0, 0.5);
+      position: relative;
+      cursor: pointer;
     }
 
-    .icon:hover {
-      transform: scale(1.2);
+    .facebook-card {
+      border: 3px solid #3b5998;
+      color: #3b5998;
+      animation: fire-blue 1.5s infinite alternate;
     }
 
-    .fb {
-      box-shadow: 0 0 30px 5px #00aaff;
-      animation: fireBlue 1.5s infinite;
+    .instagram-card {
+      border: 3px solid #e1306c;
+      color: #e1306c;
+      animation: fire-red 1.5s infinite alternate;
     }
 
-    .insta {
-      box-shadow: 0 0 30px 5px #ff3333;
-      animation: fireRed 1.5s infinite;
+    .social-card img {
+      width: 40px;
+      height: 40px;
     }
 
-    @keyframes fireBlue {
-      0%, 100% { box-shadow: 0 0 30px #00aaff; }
-      50% { box-shadow: 0 0 40px #66ccff; }
-    }
-
-    @keyframes fireRed {
-      0%, 100% { box-shadow: 0 0 30px #ff3333; }
-      50% { box-shadow: 0 0 40px #ff6666; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    .ash {
+    .stop-button {
       position: fixed;
-      width: 3px;
-      height: 3px;
-      background: rgba(255,255,255,0.5);
-      animation: ash 5s linear infinite;
-      z-index: 1;
-    }
-
-    @keyframes ash {
-      0% { transform: translateY(0) translateX(0); opacity: 0.8; }
-      100% { transform: translateY(-100vh) translateX(30px); opacity: 0; }
-    }
-
-    #musicBtn {
-      position: fixed;
-      bottom: 15px;
-      right: 15px;
-      background: rgba(0,0,0,0.7);
+      bottom: 20px;
+      right: 20px;
+      background: #ff4444;
       color: white;
-      border: none;
       padding: 10px 15px;
+      border: none;
       border-radius: 10px;
       cursor: pointer;
-      z-index: 999;
+      font-size: 16px;
     }
 
-    iframe {
-      width: 0;
-      height: 0;
-      border: none;
+    @keyframes fire-blue {
+      0% { box-shadow: 0 0 10px #3b5998; }
+      100% { box-shadow: 0 0 30px #3b5998; }
+    }
+
+    @keyframes fire-red {
+      0% { box-shadow: 0 0 10px #e1306c; }
+      100% { box-shadow: 0 0 30px #e1306c; }
+    }
+
+    .embers {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: url('https://i.postimg.cc/wvDrk6dq/embers.gif');
+      opacity: 0.2;
+      z-index: 0;
     }
   </style>
 </head>
 <body>
 
-  <h1>Azul Fellawen — Welcome to MXA Social Media</h1>
+  <div class="embers"></div>
+  <div class="container">
+    <div class="social-card facebook-card" onclick="window.open('https://www.facebook.com/insta.matixaliouche0000', '_blank')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+      Facebook
+    </div>
 
-  <div class="icons">
-    <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="icon fb">
-    </a>
-    <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="icon insta">
-    </a>
+    <div class="social-card instagram-card" onclick="window.open('https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==', '_blank')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      Instagram
+    </div>
   </div>
 
-  <iframe id="ytAudio" src="https://www.youtube.com/embed/B9synWjqBn8?autoplay=1&mute=0" allow="autoplay"></iframe>
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://voca.ro/1jmOjd1Xpthn" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-  <button id="musicBtn" onclick="toggleMusic()">إيقاف الموسيقى</button>
+  <button class="stop-button" onclick="toggleMusic()">Stop Music</button>
 
-  <!-- رماد متطاير -->
   <script>
-    for(let i = 0; i < 50; i++) {
-      const ash = document.createElement('div');
-      ash.classList.add('ash');
-      ash.style.left = Math.random() * 100 + 'vw';
-      ash.style.top = Math.random() * 100 + 'vh';
-      ash.style.animationDuration = (Math.random() * 5 + 5) + 's';
-      ash.style.opacity = Math.random();
-      document.body.appendChild(ash);
-    }
-
-    let playing = true;
+    let music = document.getElementById("bgMusic");
+    let btn = document.querySelector(".stop-button");
     function toggleMusic() {
-      const iframe = document.getElementById('ytAudio');
-      if (playing) {
-        iframe.src = "";
-        document.getElementById('musicBtn').innerText = "تشغيل الموسيقى";
+      if (music.paused) {
+        music.play();
+        btn.innerText = "Stop Music";
       } else {
-        iframe.src = "https://www.youtube.com/embed/B9synWjqBn8?autoplay=1&mute=0";
-        document.getElementById('musicBtn').innerText = "إيقاف الموسيقى";
+        music.pause();
+        btn.innerText = "Play Music";
       }
-      playing = !playing;
     }
   </script>
-
 </body>
 </html>
