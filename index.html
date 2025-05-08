@@ -14,7 +14,31 @@
       backdrop-filter: brightness(0.9);
       margin: 0;
       padding-bottom: 100px; /* Add enough space at the bottom for the button */
+      overflow: hidden;
     }
+
+    /* Creating Ash Effect (Floating Ashes) */
+    .ash {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: ashEffect 5s infinite;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    @keyframes ashEffect {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* Social Media Logos */
     a {
       display: block;
       margin: 20px auto;
@@ -22,7 +46,6 @@
       height: 60px; /* You can adjust this size */
       border-radius: 50%; /* Make the images circular */
       padding: 5px; /* Add space around the image */
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* Add shadow to logos */
       transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
       animation: bounceIn 1s ease; /* Add animation to make logos bounce in */
     }
@@ -31,11 +54,13 @@
       height: 100%;
       border-radius: 50%; /* To make logos circular */
     }
-    /* Facebook logo with fire effect */
+
+    /* Fire effect for Facebook */
     .facebook-logo {
       animation: fireEffect 1s infinite alternate;
     }
 
+    /* Fire effect animation */
     @keyframes fireEffect {
       0% {
         box-shadow: 0 0 8px 2px rgba(0, 255, 255, 0.6), 0 0 20px 4px rgba(0, 0, 255, 0.8); /* Blue fire effect */
@@ -48,41 +73,42 @@
       }
     }
 
-    /* Instagram logo with fire effect (optional) */
+    /* Red border for Instagram */
     .instagram-logo {
-      animation: fireEffect 1s infinite alternate;
+      border: 3px solid red; /* Red border for Instagram logo */
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
+    /* Social media container */
     .social-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-top: 50px; /* Space at the top */
     }
-    .social-container a {
-      margin-bottom: 20px; /* Space between logos */
-    }
+
+    /* Button (Removed as per request) */
     button {
-      font-size: 22px;
-      color: white;
-      background-color: #00acee;
-      padding: 10px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      border: none;
-      position: fixed;
-      left: 50%;
-      bottom: 20px; /* Position the button at the bottom */
-      transform: translateX(-50%); /* Center the button */
+      display: none; /* Hide the button now */
     }
-    button:hover {
-      background-color: #ffcc00;
-    }
+
     iframe {
-      margin-top: 30px;
-      width: 0; /* Initially hidden */
-      height: 0; /* Initially hidden */
+      width: 0;
+      height: 0;
       border: none;
+    }
+
+    /* To make the logos bounce in */
+    @keyframes bounceIn {
+      0% {
+        transform: translateY(100%); opacity: 0;
+      }
+      50% {
+        transform: translateY(-30px); opacity: 1;
+      }
+      100% {
+        transform: translateY(0); opacity: 1;
+      }
     }
   </style>
 </head>
@@ -96,24 +122,32 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
     </a>
 
-    <!-- Instagram logo with optional fire effect -->
+    <!-- Instagram logo with red border -->
     <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank" class="instagram-logo">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/512px-Instagram_logo_2022.svg.png" alt="Instagram Logo">
     </a>
   </div>
 
-  <!-- Button to play YouTube audio -->
-  <button onclick="playAudio()">Travis Scott - FE!N</button>
-
-  <!-- YouTube audio iframe, initially hidden -->
+  <!-- YouTube audio iframe, autoplay enabled -->
   <iframe id="youtubeAudio" src="https://www.youtube.com/embed/B9synWjqBn8?autoplay=1&mute=0&controls=0" allow="autoplay"></iframe>
 
+  <!-- Generate Ash Effect -->
   <script>
-    function playAudio() {
-      var iframe = document.getElementById('youtubeAudio');
-      iframe.style.width = '1px'; // Make iframe visible
-      iframe.style.height = '1px'; // Make iframe visible
-    }
+    // Generate floating ashes periodically
+    setInterval(function () {
+      var ash = document.createElement('div');
+      ash.classList.add('ash');
+      ash.style.width = Math.random() * 10 + 'px'; // Random size
+      ash.style.height = Math.random() * 10 + 'px'; // Random size
+      ash.style.left = Math.random() * window.innerWidth + 'px'; // Random horizontal position
+      ash.style.top = window.innerHeight + 'px'; // Start at the bottom
+      document.body.appendChild(ash);
+
+      // Remove the ash after it finishes the animation
+      setTimeout(function () {
+        ash.remove();
+      }, 5000); // Match the duration of the animation
+    }, 100); // Create a new ash every 100ms
   </script>
 </body>
 </html>
