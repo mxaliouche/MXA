@@ -15,13 +15,6 @@
       overflow: hidden;
     }
 
-    /* Effect for smoke and particles */
-    @keyframes smoke {
-      0% { opacity: 0.7; transform: translate(0, 0); }
-      50% { opacity: 0.3; transform: translate(30px, -10px); }
-      100% { opacity: 0.7; transform: translate(-30px, 10px); }
-    }
-
     /* Welcome page (initial) */
     #welcomeScreen {
       position: fixed;
@@ -34,22 +27,15 @@
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      animation: fadeIn 1s ease-in-out;
       flex-direction: column;
       text-align: center;
       backdrop-filter: blur(5px);
     }
 
-    /* Animation for fade-in */
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
     /* Circle button */
     .circle-btn {
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       background-color: #ffcc00;
       border: none;
@@ -70,7 +56,7 @@
 
     /* "Join Us" text */
     .join-text {
-      font-size: 2em;
+      font-size: 2.5em;
       font-weight: 700;
       color: #fff;
       margin-top: 20px;
@@ -97,16 +83,23 @@
       z-index: -1;
     }
 
-    /* Effect for background elements */
-    .background-effects {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -2;
-      animation: smoke 5s infinite;
+    /* Social media logos */
+    .social-logo {
+      width: 50px;
+      height: 50px;
+      margin: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-logo:hover {
+      transform: scale(1.2);
+    }
+
+    /* Social links container */
+    .social-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
     }
 
   </style>
@@ -122,16 +115,16 @@
   <!-- Main Content -->
   <div id="content">
     <h1>Azul Fellawen - Welcome To MXA Social Media Site</h1>
-    <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-logo" />
-    </a>
-    <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" class="social-logo" />
-    </a>
+    
+    <div class="social-container">
+      <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-logo" />
+      </a>
+      <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" class="social-logo" />
+      </a>
+    </div>
   </div>
-
-  <!-- Background Smoke -->
-  <div class="background-effects"></div>
 
   <!-- Audio -->
   <audio id="audio" autoplay loop>
