@@ -4,140 +4,209 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Links</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jaywcjlove&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Jaywcjlove', sans-serif;
       margin: 0;
       padding: 0;
-      background: url('https://i.postimg.cc/526npqWX/Picsart-25-05-08-13-27-30-401.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
       overflow: hidden;
+      background-color: black;
+      position: relative;
     }
 
-    /* Welcome page (initial) */
-    #welcomeScreen {
+    /* تأثير الرماد المتطاير */
+    @keyframes ash {
+      0% {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(50px, -50px);
+        opacity: 0;
+      }
+    }
+
+    .ash {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      width: 5px;
+      height: 5px;
+      animation: ash 5s infinite;
+    }
+
+    /* تأثيرات الدائرة على الواجهة الترحيبية */
+    .welcome-screen {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      right: 0;
+      bottom: 0;
       background: rgba(255, 255, 255, 0.8);
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 1000;
-      flex-direction: column;
-      text-align: center;
-      backdrop-filter: blur(5px);
+      z-index: 999;
+      opacity: 1;
+      transition: opacity 1s;
     }
 
-    /* Circle button */
-    .circle-btn {
+    .welcome-screen h1 {
+      font-family: 'Jaywcjlove', sans-serif;
+      font-size: 32px;
+      color: #000;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .circle {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background-color: #ffcc00;
-      border: none;
-      animation: pulse 1.5s infinite ease-in-out;
+      background-color: #00acee;
+      animation: circleAnim 2s ease-in-out infinite;
       cursor: pointer;
-      box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+      box-shadow: 0 0 20px rgba(0, 172, 238, 0.8);
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+    @keyframes circleAnim {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
 
-    .circle-btn:hover {
-      background-color: #ff9900;
-    }
-
-    /* "Join Us" text */
-    .join-text {
-      font-size: 2.5em;
-      font-weight: 700;
-      color: #fff;
-      margin-top: 20px;
-      text-shadow: 0 0 20px rgba(255, 204, 0, 0.7);
-      animation: slideIn 2s ease-out;
-    }
-
-    @keyframes slideIn {
-      0% { transform: translateY(-50px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    /* Main Content */
-    #content {
-      display: none;
-    }
-
-    /* Effects for audio background */
-    audio {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      z-index: -1;
-    }
-
-    /* Social media logos */
-    .social-logo {
-      width: 50px;
-      height: 50px;
-      margin: 20px;
-      transition: transform 0.3s ease;
-    }
-
-    .social-logo:hover {
-      transform: scale(1.2);
-    }
-
-    /* Social links container */
-    .social-container {
+    .container {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      color: white;
+      text-align: center;
     }
 
+    /* شعارات الفايسبوك وإنستغرام */
+    .social-icon {
+      position: relative;
+      width: 220px;
+      height: 60px;
+      margin: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .facebook {
+      background: linear-gradient(to right, #00acee, #005c99);
+      animation: fireEffectBlue 2s infinite alternate;
+    }
+
+    .instagram {
+      background: linear-gradient(to right, #ff0066, #d2006b);
+      animation: fireEffectRed 2s infinite alternate;
+    }
+
+    .social-icon:hover {
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+    }
+
+    .social-icon span {
+      font-size: 18px;
+      color: white;
+      margin-left: 10px;
+    }
+
+    /* تأثيرات النار */
+    @keyframes fireEffectBlue {
+      0% {
+        box-shadow: 0 0 30px rgba(0, 172, 238, 0.9);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(0, 172, 238, 0.8), 0 0 15px rgba(0, 172, 238, 0.4);
+      }
+    }
+
+    @keyframes fireEffectRed {
+      0% {
+        box-shadow: 0 0 30px rgba(255, 0, 102, 0.9);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(255, 0, 102, 0.8), 0 0 15px rgba(255, 0, 102, 0.4);
+      }
+    }
+
+    /* نص التوقف عن الموسيقى */
+    .stop-music {
+      font-size: 20px;
+      color: white;
+      background-color: #00acee;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .stop-music:hover {
+      background-color: #ffcc00;
+    }
+
+    /* الموسيقى */
+    audio {
+      width: 100%;
+      display: none;
+    }
   </style>
 </head>
 <body>
-
-  <!-- Initial Welcome Screen -->
-  <div id="welcomeScreen">
-    <button class="circle-btn" onclick="startSite()"></button>
-    <div class="join-text">Join Us</div>
-  </div>
-
-  <!-- Main Content -->
-  <div id="content">
-    <h1>Azul Fellawen - Welcome To MXA Social Media Site</h1>
-    
-    <div class="social-container">
-      <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-logo" />
-      </a>
-      <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" class="social-logo" />
-      </a>
+  <!-- واجهة الترحيب -->
+  <div class="welcome-screen">
+    <div>
+      <h1>Welcome to My Website</h1>
+      <div class="circle" onclick="startMusic()"></div>
     </div>
   </div>
 
-  <!-- Audio -->
-  <audio id="audio" autoplay loop>
+  <!-- روابط السوشيال ميديا -->
+  <div class="container">
+    <div class="social-icon facebook">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="30" height="30">
+      <span>Facebook</span>
+    </div>
+    <div class="social-icon instagram">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" width="30" height="30">
+      <span>Instagram</span>
+    </div>
+  </div>
+
+  <!-- الموسيقى -->
+  <audio id="music" autoplay loop>
     <source src="https://voca.ro/1jmOjd1Xpthn" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
+  <!-- زر إيقاف الموسيقى -->
+  <button class="stop-music" onclick="stopMusic()">Stop Music</button>
+
   <script>
-    // Function to hide welcome screen and show content
-    function startSite() {
-      document.getElementById('welcomeScreen').style.display = 'none';
-      document.getElementById('content').style.display = 'block';
-      document.getElementById('audio').play(); // Play the audio
+    function startMusic() {
+      document.querySelector('.welcome-screen').style.opacity = '0';
+      document.querySelector('.welcome-screen').style.pointerEvents = 'none';
+      document.getElementById('music').play();
+    }
+
+    function stopMusic() {
+      document.getElementById('music').pause();
     }
   </script>
 </body>
