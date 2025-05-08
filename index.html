@@ -6,7 +6,7 @@
   <style>
     body {
       font-family: Arial;
-      background: url('https://i.postimg.cc/Tw9wKbw9/Picsart-25-05-08-12-36-27-617.jpg') no-repeat center center fixed;
+      background: url('https://i.postimg.cc/526npqWX/Picsart-25-05-08-13-27-30-401.jpg') no-repeat center center fixed;
       background-size: cover;
       color: white;
       text-align: center;
@@ -28,11 +28,43 @@
       color: #ffcc00;
       background: rgba(0, 0, 0, 0.7);
     }
+    button {
+      font-size: 22px;
+      color: white;
+      background-color: #00acee;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
+    }
+    button:hover {
+      background-color: #ffcc00;
+    }
+    iframe {
+      margin-top: 30px;
+      width: 1px; /* Hide video width */
+      height: 1px; /* Hide video height */
+      border: none;
+    }
   </style>
 </head>
 <body>
   <h1>Azul Fellawen - Welcome To MXA Social Media Site</h1>
   <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank">Facebook</a>
   <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank">Instagram</a>
+
+  <!-- Button to play YouTube audio -->
+  <button onclick="playAudio()">Travis Scott - FE!N</button>
+
+  <!-- YouTube audio iframe, initially hidden -->
+  <iframe id="youtubeAudio" src="https://www.youtube.com/embed/B9synWjqBn8?autoplay=1&mute=0" allow="autoplay"></iframe>
+
+  <script>
+    function playAudio() {
+      var iframe = document.getElementById('youtubeAudio');
+      iframe.style.width = '0'; // Hide the iframe
+      iframe.style.height = '0'; // Hide the iframe
+    }
+  </script>
 </body>
 </html>
