@@ -5,6 +5,7 @@
   <title>Welcome Splash</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" />
   <link href="https://cdn.jsdelivr.net/gh/jaywcjlove/font-awesome@main/jaywcjlove.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     * {
       margin: 0; padding: 0; box-sizing: border-box;
@@ -31,7 +32,8 @@
     .splash h1 {
       font-family: jaywcjlove, sans-serif;
       font-size: 2em;
-      margin-bottom: 20px;
+      position: absolute;
+      top: 50px;
     }
     .circle {
       width: 100px;
@@ -58,20 +60,24 @@
     }
     .main h2 {
       font-size: 2em;
-      margin: 20px;
+      margin-top: 30px;
       font-family: 'Orbitron', sans-serif;
     }
     .socials {
       display: flex;
       gap: 30px;
+      margin-top: 60px;
     }
     .social-box {
-      padding: 20px;
+      padding: 15px 25px;
       border-radius: 10px;
       color: white;
       font-size: 1.2em;
       cursor: pointer;
       transition: transform 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     .social-box:hover {
       transform: scale(1.1);
@@ -118,13 +124,17 @@
   </div>  <div class="main" id="main">
     <h2>Welcome to our communication world</h2>
     <div class="socials">
-      <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank" class="social-box facebook">Facebook</a>
-      <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank" class="social-box instagram">Instagram</a>
+      <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank" class="social-box facebook">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank" class="social-box instagram">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
     </div>
     <div class="music-controls">
       <button onclick="toggleMusic()" id="musicBtn">Stop Music</button>
     </div>
-  </div>  <audio id="music" loop>
+  </div>  <audio id="music" loop autoplay>
     <source src="https://voca.ro/1jmOjd1Xpthn" type="audio/mpeg">
   </audio>  <script>
     let musicPlaying = false;
@@ -137,8 +147,11 @@
         document.getElementById("splash").style.display = 'none';
         document.getElementById("main").style.display = 'flex';
       }, 1000);
-      music.play();
-      musicPlaying = true;
+      music.play().then(() => {
+        musicPlaying = true;
+      }).catch(e => {
+        console.log("Autoplay failed:", e);
+      });
     }
 
     function toggleMusic() {
