@@ -20,16 +20,39 @@
       margin: 20px auto;
       width: 60px; /* You can adjust this size */
       height: 60px; /* You can adjust this size */
+      border-radius: 50%; /* Make the images circular */
+      padding: 5px; /* Add space around the image */
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* Add shadow to logos */
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+      animation: bounceIn 1s ease; /* Add animation to make logos bounce in */
     }
     a img {
       width: 100%;
       height: 100%;
       border-radius: 50%; /* To make logos circular */
-      transition: transform 0.3s ease;
     }
-    a:hover img {
-      transform: scale(1.1); /* Zoom effect when hovering */
+    /* Facebook logo with fire effect */
+    .facebook-logo {
+      animation: fireEffect 1s infinite alternate;
     }
+
+    @keyframes fireEffect {
+      0% {
+        box-shadow: 0 0 8px 2px rgba(0, 255, 255, 0.6), 0 0 20px 4px rgba(0, 0, 255, 0.8); /* Blue fire effect */
+      }
+      50% {
+        box-shadow: 0 0 10px 3px rgba(0, 255, 255, 0.8), 0 0 25px 5px rgba(0, 0, 255, 1); /* Intense blue fire effect */
+      }
+      100% {
+        box-shadow: 0 0 12px 4px rgba(0, 255, 255, 0.6), 0 0 30px 6px rgba(0, 0, 255, 0.8); /* Stronger blue fire */
+      }
+    }
+
+    /* Instagram logo with fire effect (optional) */
+    .instagram-logo {
+      animation: fireEffect 1s infinite alternate;
+    }
+
     .social-container {
       display: flex;
       flex-direction: column;
@@ -68,13 +91,13 @@
 
   <!-- Social Media Logos -->
   <div class="social-container">
-    <!-- Facebook logo -->
-    <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank">
+    <!-- Facebook logo with fire effect -->
+    <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank" class="facebook-logo">
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
     </a>
 
-    <!-- Instagram logo -->
-    <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank">
+    <!-- Instagram logo with optional fire effect -->
+    <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank" class="instagram-logo">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/512px-Instagram_logo_2022.svg.png" alt="Instagram Logo">
     </a>
   </div>
