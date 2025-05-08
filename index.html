@@ -14,19 +14,19 @@
       backdrop-filter: brightness(0.9);
     }
     a {
-      display: block;
+      display: inline-block;
       margin: 20px auto;
-      font-size: 22px;
-      color: #00acee;
-      text-decoration: none;
-      width: fit-content;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px 20px;
-      border-radius: 10px;
+      width: 60px; /* You can adjust this size */
+      height: 60px; /* You can adjust this size */
     }
-    a:hover {
-      color: #ffcc00;
-      background: rgba(0, 0, 0, 0.7);
+    a img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%; /* To make logos circular */
+      transition: transform 0.3s ease;
+    }
+    a:hover img {
+      transform: scale(1.1); /* Zoom effect when hovering */
     }
     button {
       font-size: 22px;
@@ -42,28 +42,36 @@
     }
     iframe {
       margin-top: 30px;
-      width: 1px; /* Hide video width */
-      height: 1px; /* Hide video height */
+      width: 0; /* Initially hidden */
+      height: 0; /* Initially hidden */
       border: none;
     }
   </style>
 </head>
 <body>
   <h1>Azul Fellawen - Welcome To MXA Social Media Site</h1>
-  <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank">Facebook</a>
-  <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank">Instagram</a>
+  
+  <!-- Facebook logo -->
+  <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
+  </a>
+
+  <!-- Instagram logo -->
+  <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/512px-Instagram_logo_2022.svg.png" alt="Instagram Logo">
+  </a>
 
   <!-- Button to play YouTube audio -->
   <button onclick="playAudio()">Travis Scott - FE!N</button>
 
   <!-- YouTube audio iframe, initially hidden -->
-  <iframe id="youtubeAudio" src="https://www.youtube.com/embed/B9synWjqBn8?autoplay=1&mute=0" allow="autoplay"></iframe>
+  <iframe id="youtubeAudio" src="https://www.youtube.com/embed/B9synWjqBn8?autoplay=1&mute=0&controls=0" allow="autoplay"></iframe>
 
   <script>
     function playAudio() {
       var iframe = document.getElementById('youtubeAudio');
-      iframe.style.width = '0'; // Hide the iframe
-      iframe.style.height = '0'; // Hide the iframe
+      iframe.style.width = '1px'; // Make iframe visible
+      iframe.style.height = '1px'; // Make iframe visible
     }
   </script>
 </body>
