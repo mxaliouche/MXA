@@ -2,198 +2,150 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MXA Social</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Links</title>
   <style>
     body {
+      font-family: 'Roboto', sans-serif;
       margin: 0;
-      font-family: 'Poppins', sans-serif;
+      padding: 0;
       background: url('https://i.postimg.cc/526npqWX/Picsart-25-05-08-13-27-30-401.jpg') no-repeat center center fixed;
       background-size: cover;
       color: white;
       overflow: hidden;
     }
 
-    /* شاشة البداية */
-    #intro {
+    /* Effect for smoke and particles */
+    @keyframes smoke {
+      0% { opacity: 0.7; transform: translate(0, 0); }
+      50% { opacity: 0.3; transform: translate(30px, -10px); }
+      100% { opacity: 0.7; transform: translate(-30px, 10px); }
+    }
+
+    /* Welcome page (initial) */
+    #welcomeScreen {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255, 255, 255, 0.8);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      transition: opacity 1s ease;
+      animation: fadeIn 1s ease-in-out;
+      flex-direction: column;
+      text-align: center;
+      backdrop-filter: blur(5px);
     }
 
+    /* Animation for fade-in */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Circle button */
     .circle-btn {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
+      background-color: #ffcc00;
       border: none;
-      background: #000;
-      color: white;
-      font-size: 20px;
+      animation: pulse 1.5s infinite ease-in-out;
       cursor: pointer;
-      box-shadow: 0 0 20px #00f, 0 0 40px #00f;
-      animation: pulse 2s infinite;
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
     }
 
     @keyframes pulse {
-      0% { box-shadow: 0 0 5px #00f; }
-      50% { box-shadow: 0 0 20px #00f; }
-      100% { box-shadow: 0 0 5px #00f; }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
+    .circle-btn:hover {
+      background-color: #ff9900;
+    }
+
+    /* "Join Us" text */
     .join-text {
+      font-size: 2em;
+      font-weight: 700;
+      color: #fff;
       margin-top: 20px;
-      color: #000;
-      font-size: 24px;
+      text-shadow: 0 0 20px rgba(255, 204, 0, 0.7);
+      animation: slideIn 2s ease-out;
     }
 
-    h1 {
-      text-align: center;
-      padding-top: 50px;
-      font-size: 32px;
+    @keyframes slideIn {
+      0% { transform: translateY(-50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
 
-    .card {
-      margin: 30px auto;
-      width: 300px;
-      padding: 20px;
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 15px;
-      background: rgba(0,0,0,0.4);
-      border: 2px solid;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    /* Main Content */
+    #content {
+      display: none;
     }
 
-    .facebook {
-      border-color: #1877f2;
-      box-shadow: 0 0 15px #1877f2;
-    }
-
-    .instagram {
-      border-color: #e1306c;
-      box-shadow: 0 0 15px #e1306c;
-    }
-
-    .card img {
-      width: 40px;
-      height: 40px;
-    }
-
-    .card-text {
-      color: white;
-      font-size: 18px;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-      transition: 0.3s ease;
-    }
-
-    .audio-controls {
+    /* Effects for audio background */
+    audio {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 10;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1;
     }
 
-    .audio-controls button {
-      background: #222;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 10px;
-      font-size: 14px;
-      cursor: pointer;
+    /* Effect for background elements */
+    .background-effects {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -2;
+      animation: smoke 5s infinite;
     }
 
-    /* رماد متطاير */
-    .ash {
-      position: fixed;
-      width: 3px;
-      height: 3px;
-      background: rgba(255, 255, 255, 0.4);
-      animation: fly 10s linear infinite;
-      border-radius: 50%;
-      z-index: 1;
-    }
-
-    @keyframes fly {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) translateX(50px);
-        opacity: 0;
-      }
-    }
   </style>
 </head>
 <body>
 
-<!-- شاشة البداية -->
-<div id="intro">
-  <button class="circle-btn" onclick="startSite()">Enter</button>
-  <div class="join-text">Join Us</div>
-</div>
+  <!-- Initial Welcome Screen -->
+  <div id="welcomeScreen">
+    <button class="circle-btn" onclick="startSite()"></button>
+    <div class="join-text">Join Us</div>
+  </div>
 
-<!-- العناصر الرئيسية -->
-<h1 id="welcome">Azul Fellawen - Welcome To MXA Social Media Site</h1>
+  <!-- Main Content -->
+  <div id="content">
+    <h1>Azul Fellawen - Welcome To MXA Social Media Site</h1>
+    <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-logo" />
+    </a>
+    <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" class="social-logo" />
+    </a>
+  </div>
 
-<div class="card facebook" onclick="window.open('https://www.facebook.com/insta.matixaliouche0000','_blank')">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
-  <div class="card-text">Facebook</div>
-</div>
+  <!-- Background Smoke -->
+  <div class="background-effects"></div>
 
-<div class="card instagram" onclick="window.open('https://www.instagram.com/x_mx_aliouche_x','_blank')">
-  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
-  <div class="card-text">Instagram</div>
-</div>
+  <!-- Audio -->
+  <audio id="audio" autoplay loop>
+    <source src="https://voca.ro/1jmOjd1Xpthn" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
 
-<!-- تحكم بالصوت -->
-<div class="audio-controls">
-  <button onclick="toggleAudio()">Toggle Music</button>
-</div>
-
-<!-- مشغل الصوت -->
-<audio id="myAudio" src="https://media.vocaroo.com/mp3/1jmOjd1Xpthn" loop></audio>
-
-<!-- رماد متطاير -->
-<script>
-  // توليد رماد متطاير
-  for(let i=0; i<60; i++) {
-    let ash = document.createElement('div');
-    ash.className = 'ash';
-    ash.style.left = Math.random() * 100 + 'vw';
-    ash.style.top = Math.random() * 100 + 'vh';
-    ash.style.animationDuration = (5 + Math.random() * 5) + 's';
-    document.body.appendChild(ash);
-  }
-
-  // تشغيل الموقع
-  function startSite() {
-    document.getElementById('intro').style.display = 'none';
-    document.getElementById('myAudio').play();
-  }
-
-  // زر التبديل
-  function toggleAudio() {
-    let audio = document.getElementById("myAudio");
-    if (audio.paused) audio.play();
-    else audio.pause();
-  }
-</script>
-
+  <script>
+    // Function to hide welcome screen and show content
+    function startSite() {
+      document.getElementById('welcomeScreen').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+      document.getElementById('audio').play(); // Play the audio
+    }
+  </script>
 </body>
 </html>
