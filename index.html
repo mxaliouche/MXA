@@ -1,213 +1,166 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Links</title>
-  <link href="https://fonts.googleapis.com/css2?family=Jaywcjlove&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome Splash</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" />
+  <link href="https://cdn.jsdelivr.net/gh/jaywcjlove/font-awesome@main/jaywcjlove.css" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Jaywcjlove', sans-serif;
-      margin: 0;
-      padding: 0;
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0b0f1a;
+      color: white;
       overflow: hidden;
-      background-color: black;
-      position: relative;
     }
-
-    /* تأثير الرماد المتطاير */
-    @keyframes ash {
-      0% {
-        transform: translate(0, 0);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(50px, -50px);
-        opacity: 0;
-      }
-    }
-
-    .ash {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.3);
-      width: 5px;
-      height: 5px;
-      animation: ash 5s infinite;
-    }
-
-    /* تأثيرات الدائرة على الواجهة الترحيبية */
-    .welcome-screen {
+    .splash {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(255, 255, 255, 0.8);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 999;
-      opacity: 1;
-      transition: opacity 1s;
+      z-index: 1000;
+      flex-direction: column;
+      transition: opacity 1s ease;
     }
-
-    .welcome-screen h1 {
-      font-family: 'Jaywcjlove', sans-serif;
-      font-size: 32px;
-      color: #000;
-      text-align: center;
+    .splash h1 {
+      font-family: jaywcjlove, sans-serif;
+      font-size: 2em;
       margin-bottom: 20px;
     }
-
     .circle {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background-color: #00acee;
-      animation: circleAnim 2s ease-in-out infinite;
+      background: radial-gradient(circle, #0077ff, #001f3f);
+      box-shadow: 0 0 20px #00f, 0 0 40px #00f;
+      animation: pulse 2s infinite;
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(0, 172, 238, 0.8);
     }
-
-    @keyframes circleAnim {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-      100% {
-        transform: scale(1);
-      }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
     }
-
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    .main {
+      background: url('https://i.ibb.co/NgMD9nGC/bg.jpg') center/cover no-repeat;
+      width: 100%; height: 100%;
+      position: relative;
+      display: none;
       flex-direction: column;
-      color: white;
+      align-items: center;
+      justify-content: center;
       text-align: center;
     }
-
-    /* شعارات الفايسبوك وإنستغرام */
-    .social-icon {
-      position: relative;
-      width: 220px;
-      height: 60px;
+    .main h2 {
+      font-size: 2em;
       margin: 20px;
-      border-radius: 10px;
-      overflow: hidden;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .socials {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-      transition: all 0.3s ease;
+      gap: 30px;
     }
-
-    .facebook {
-      background: linear-gradient(to right, #00acee, #005c99);
-      animation: fireEffectBlue 2s infinite alternate;
-    }
-
-    .instagram {
-      background: linear-gradient(to right, #ff0066, #d2006b);
-      animation: fireEffectRed 2s infinite alternate;
-    }
-
-    .social-icon:hover {
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
-    }
-
-    .social-icon span {
-      font-size: 18px;
-      color: white;
-      margin-left: 10px;
-    }
-
-    /* تأثيرات النار */
-    @keyframes fireEffectBlue {
-      0% {
-        box-shadow: 0 0 30px rgba(0, 172, 238, 0.9);
-      }
-      100% {
-        box-shadow: 0 0 20px rgba(0, 172, 238, 0.8), 0 0 15px rgba(0, 172, 238, 0.4);
-      }
-    }
-
-    @keyframes fireEffectRed {
-      0% {
-        box-shadow: 0 0 30px rgba(255, 0, 102, 0.9);
-      }
-      100% {
-        box-shadow: 0 0 20px rgba(255, 0, 102, 0.8), 0 0 15px rgba(255, 0, 102, 0.4);
-      }
-    }
-
-    /* نص التوقف عن الموسيقى */
-    .stop-music {
-      font-size: 20px;
-      color: white;
-      background-color: #00acee;
-      padding: 10px 20px;
+    .social-box {
+      padding: 20px;
       border-radius: 10px;
+      color: white;
+      font-size: 1.2em;
       cursor: pointer;
-      margin-top: 20px;
+      transition: transform 0.3s;
     }
-
-    .stop-music:hover {
-      background-color: #ffcc00;
+    .social-box:hover {
+      transform: scale(1.1);
     }
-
-    /* الموسيقى */
-    audio {
-      width: 100%;
-      display: none;
+    .facebook {
+      border: 2px solid #1877f2;
+      box-shadow: 0 0 15px #1877f2;
+    }
+    .instagram {
+      border: 2px solid #e1306c;
+      box-shadow: 0 0 15px #e1306c;
+    }
+    .music-controls {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+    }
+    .music-controls button {
+      padding: 10px 20px;
+      background: #111;
+      border: 1px solid white;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .ash {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(255,255,255,0.3);
+      animation: floatAsh 10s linear infinite;
+    }
+    @keyframes floatAsh {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100vh); }
     }
   </style>
 </head>
 <body>
-  <!-- واجهة الترحيب -->
-  <div class="welcome-screen">
-    <div>
-      <h1>Welcome to My Website</h1>
-      <div class="circle" onclick="startMusic()"></div>
+  <div class="splash" id="splash">
+    <h1>Be one of us</h1>
+    <div class="circle" onclick="startExperience()"></div>
+  </div>  <div class="main" id="main">
+    <h2>Welcome to our communication world</h2>
+    <div class="socials">
+      <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank" class="social-box facebook">Facebook</a>
+      <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank" class="social-box instagram">Instagram</a>
     </div>
-  </div>
-
-  <!-- روابط السوشيال ميديا -->
-  <div class="container">
-    <div class="social-icon facebook">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="30" height="30">
-      <span>Facebook</span>
+    <div class="music-controls">
+      <button onclick="toggleMusic()" id="musicBtn">Stop Music</button>
     </div>
-    <div class="social-icon instagram">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" width="30" height="30">
-      <span>Instagram</span>
-    </div>
-  </div>
+  </div>  <audio id="music" loop>
+    <source src="https://voca.ro/1jmOjd1Xpthn" type="audio/mpeg">
+  </audio>  <script>
+    let musicPlaying = false;
+    const music = document.getElementById("music");
+    const musicBtn = document.getElementById("musicBtn");
 
-  <!-- الموسيقى -->
-  <audio id="music" autoplay loop>
-    <source src="https://voca.ro/1jmOjd1Xpthn" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-
-  <!-- زر إيقاف الموسيقى -->
-  <button class="stop-music" onclick="stopMusic()">Stop Music</button>
-
-  <script>
-    function startMusic() {
-      document.querySelector('.welcome-screen').style.opacity = '0';
-      document.querySelector('.welcome-screen').style.pointerEvents = 'none';
-      document.getElementById('music').play();
+    function startExperience() {
+      document.getElementById("splash").style.opacity = 0;
+      setTimeout(() => {
+        document.getElementById("splash").style.display = 'none';
+        document.getElementById("main").style.display = 'flex';
+      }, 1000);
+      music.play();
+      musicPlaying = true;
     }
 
-    function stopMusic() {
-      document.getElementById('music').pause();
+    function toggleMusic() {
+      if (musicPlaying) {
+        music.pause();
+        musicPlaying = false;
+        musicBtn.innerText = "Play Music";
+      } else {
+        music.play();
+        musicPlaying = true;
+        musicBtn.innerText = "Stop Music";
+      }
     }
-  </script>
-</body>
+
+    // Generate ash effect
+    for (let i = 0; i < 100; i++) {
+      let ash = document.createElement('div');
+      ash.classList.add('ash');
+      ash.style.left = Math.random() * 100 + 'vw';
+      ash.style.top = Math.random() * 100 + 'vh';
+      ash.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(ash);
+    }
+  </script></body>
 </html>
