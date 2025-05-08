@@ -2,94 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Links</title>
+  <title>MXA Social Media</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial;
+      font-family: 'Poppins', sans-serif;
       background: url('https://i.postimg.cc/526npqWX/Picsart-25-05-08-13-27-30-401.jpg') no-repeat center center fixed;
       background-size: cover;
       color: white;
-      text-align: center;
-      padding-top: 50px;
-      backdrop-filter: brightness(0.9);
-      margin: 0;
-      padding-bottom: 100px; /* Add enough space at the bottom for the button */
       overflow: hidden;
     }
 
-    /* Creating Ash Effect (Floating Ashes) */
-    .ash {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      animation: ashEffect 5s infinite;
-      opacity: 0.5;
-      pointer-events: none;
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 36px;
+      animation: fadeIn 2s ease-in-out;
     }
 
-    @keyframes ashEffect {
-      0% {
-        transform: translateY(0) scale(0.5);
-        opacity: 0.5;
-      }
-      100% {
-        transform: translateY(-100vh) scale(1.5);
-        opacity: 0;
-      }
-    }
-
-    /* Social Media Logos */
-    a {
-      display: block;
-      margin: 20px auto;
-      width: 60px; /* You can adjust this size */
-      height: 60px; /* You can adjust this size */
-      border-radius: 50%; /* Make the images circular */
-      padding: 5px; /* Add space around the image */
-      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-      animation: bounceIn 1s ease; /* Add animation to make logos bounce in */
-    }
-    a img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%; /* To make logos circular */
-    }
-
-    /* Fire effect for Facebook */
-    .facebook-logo {
-      animation: fireEffect 1s infinite alternate;
-    }
-
-    /* Fire effect animation */
-    @keyframes fireEffect {
-      0% {
-        box-shadow: 0 0 8px 2px rgba(0, 255, 255, 0.6), 0 0 20px 4px rgba(0, 0, 255, 0.8); /* Blue fire effect */
-      }
-      50% {
-        box-shadow: 0 0 10px 3px rgba(0, 255, 255, 0.8), 0 0 25px 5px rgba(0, 0, 255, 1); /* Intense blue fire effect */
-      }
-      100% {
-        box-shadow: 0 0 12px 4px rgba(0, 255, 255, 0.6), 0 0 30px 6px rgba(0, 0, 255, 0.8); /* Stronger blue fire */
-      }
-    }
-
-    /* Red border for Instagram */
-    .instagram-logo {
-      border: 3px solid red; /* Red border for Instagram logo */
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    /* Social media container */
-    .social-container {
+    .icons {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 50px; /* Space at the top */
+      margin-top: 40px;
+      gap: 30px;
     }
 
-    /* Button (Removed as per request) */
-    button {
-      display: none; /* Hide the button now */
+    .icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      padding: 10px;
+      background: rgba(0,0,0,0.5);
+      animation: pulse 2s infinite;
+      transition: transform 0.3s;
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+    }
+
+    .fb {
+      box-shadow: 0 0 30px 5px #00aaff;
+      animation: fireBlue 1.5s infinite;
+    }
+
+    .insta {
+      box-shadow: 0 0 30px 5px #ff3333;
+      animation: fireRed 1.5s infinite;
+    }
+
+    @keyframes fireBlue {
+      0%, 100% { box-shadow: 0 0 30px #00aaff; }
+      50% { box-shadow: 0 0 40px #66ccff; }
+    }
+
+    @keyframes fireRed {
+      0%, 100% { box-shadow: 0 0 30px #ff3333; }
+      50% { box-shadow: 0 0 40px #ff6666; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .ash {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      background: rgba(255,255,255,0.5);
+      animation: ash 5s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes ash {
+      0% { transform: translateY(0) translateX(0); opacity: 0.8; }
+      100% { transform: translateY(-100vh) translateX(30px); opacity: 0; }
+    }
+
+    #musicBtn {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 999;
     }
 
     iframe {
@@ -97,57 +111,50 @@
       height: 0;
       border: none;
     }
-
-    /* To make the logos bounce in */
-    @keyframes bounceIn {
-      0% {
-        transform: translateY(100%); opacity: 0;
-      }
-      50% {
-        transform: translateY(-30px); opacity: 1;
-      }
-      100% {
-        transform: translateY(0); opacity: 1;
-      }
-    }
   </style>
 </head>
 <body>
-  <h1>Azul Fellawen - Welcome To MXA Social Media Site</h1>
 
-  <!-- Social Media Logos -->
-  <div class="social-container">
-    <!-- Facebook logo with fire effect -->
-    <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank" class="facebook-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
+  <h1>Azul Fellawen — Welcome to MXA Social Media</h1>
+
+  <div class="icons">
+    <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="icon fb">
     </a>
-
-    <!-- Instagram logo with red border -->
-    <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank" class="instagram-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/512px-Instagram_logo_2022.svg.png" alt="Instagram Logo">
+    <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="icon insta">
     </a>
   </div>
 
-  <!-- YouTube audio iframe, autoplay enabled -->
-  <iframe id="youtubeAudio" src="https://www.youtube.com/embed/B9synWjqBn8?autoplay=1&mute=0&controls=0" allow="autoplay"></iframe>
+  <iframe id="ytAudio" src="https://www.youtube.com/embed/B9synWjqBn8?autoplay=1&mute=0" allow="autoplay"></iframe>
 
-  <!-- Generate Ash Effect -->
+  <button id="musicBtn" onclick="toggleMusic()">إيقاف الموسيقى</button>
+
+  <!-- رماد متطاير -->
   <script>
-    // Generate floating ashes periodically
-    setInterval(function () {
-      var ash = document.createElement('div');
+    for(let i = 0; i < 50; i++) {
+      const ash = document.createElement('div');
       ash.classList.add('ash');
-      ash.style.width = Math.random() * 10 + 'px'; // Random size
-      ash.style.height = Math.random() * 10 + 'px'; // Random size
-      ash.style.left = Math.random() * window.innerWidth + 'px'; // Random horizontal position
-      ash.style.top = window.innerHeight + 'px'; // Start at the bottom
+      ash.style.left = Math.random() * 100 + 'vw';
+      ash.style.top = Math.random() * 100 + 'vh';
+      ash.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      ash.style.opacity = Math.random();
       document.body.appendChild(ash);
+    }
 
-      // Remove the ash after it finishes the animation
-      setTimeout(function () {
-        ash.remove();
-      }, 5000); // Match the duration of the animation
-    }, 100); // Create a new ash every 100ms
+    let playing = true;
+    function toggleMusic() {
+      const iframe = document.getElementById('ytAudio');
+      if (playing) {
+        iframe.src = "";
+        document.getElementById('musicBtn').innerText = "تشغيل الموسيقى";
+      } else {
+        iframe.src = "https://www.youtube.com/embed/B9synWjqBn8?autoplay=1&mute=0";
+        document.getElementById('musicBtn').innerText = "إيقاف الموسيقى";
+      }
+      playing = !playing;
+    }
   </script>
+
 </body>
 </html>
