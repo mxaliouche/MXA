@@ -12,9 +12,11 @@
       text-align: center;
       padding-top: 50px;
       backdrop-filter: brightness(0.9);
+      margin: 0;
+      padding-bottom: 60px; /* Add space at the bottom for the button */
     }
     a {
-      display: inline-block;
+      display: block;
       margin: 20px auto;
       width: 60px; /* You can adjust this size */
       height: 60px; /* You can adjust this size */
@@ -28,6 +30,15 @@
     a:hover img {
       transform: scale(1.1); /* Zoom effect when hovering */
     }
+    .social-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px; /* Space at the top */
+    }
+    .social-container a {
+      margin-bottom: 20px; /* Space between logos */
+    }
     button {
       font-size: 22px;
       color: white;
@@ -36,6 +47,10 @@
       border-radius: 10px;
       cursor: pointer;
       border: none;
+      position: fixed;
+      bottom: 20px; /* Position the button at the bottom */
+      left: 50%;
+      transform: translateX(-50%); /* Center the button */
     }
     button:hover {
       background-color: #ffcc00;
@@ -50,16 +65,19 @@
 </head>
 <body>
   <h1>Azul Fellawen - Welcome To MXA Social Media Site</h1>
-  
-  <!-- Facebook logo -->
-  <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
-  </a>
 
-  <!-- Instagram logo -->
-  <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/512px-Instagram_logo_2022.svg.png" alt="Instagram Logo">
-  </a>
+  <!-- Social Media Logos -->
+  <div class="social-container">
+    <!-- Facebook logo -->
+    <a href="https://www.facebook.com/insta.matixaliouche0000" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
+    </a>
+
+    <!-- Instagram logo -->
+    <a href="https://www.instagram.com/x_mx_aliouche_x?igsh=MTNlcnhmZ2hwNzJtbg==" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/512px-Instagram_logo_2022.svg.png" alt="Instagram Logo">
+    </a>
+  </div>
 
   <!-- Button to play YouTube audio -->
   <button onclick="playAudio()">Travis Scott - FE!N</button>
